@@ -23,4 +23,13 @@ func main() {
 	fmt.Println(nextNumber1())
 	fmt.Println(nextNumber1())
 	fmt.Println(nextNumber1())
+	
+	arr := [3] int {1, 2, 3}
+	fmt.Println(arr)
+
+	var arr1 [2] int
+	// arr1[0] = 5
+	// arr1[1] = 6
+	arr1 = [2] int {1, 2}
+	fmt.Println(arr1)
 }
