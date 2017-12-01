@@ -3,7 +3,10 @@
 */
 
 package main
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
 func getSequence() func() int {
 	i := 0
 	return func() int {
@@ -12,7 +15,7 @@ func getSequence() func() int {
 	}
 }
 
-func GetAverage(arr []int, size int) float32 {
+func getAverage(arr []int, size int) float32 {
 	var i, sum int
 
 	for i = 0; i < size; i++ {
@@ -31,7 +34,8 @@ func main() {
 
 	var arr1 = [] int {1, 2, 13}
 	var avg float32
-	avg = getAverage(arr1, 4)
+	avg = getAverage(arr1, 3)
 	fmt.Printf("avg = %f \n", avg)
 	fmt.Printf("地址 %x \n", &avg)
+	fmt.Println(time.Now())
 }
