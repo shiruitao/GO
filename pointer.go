@@ -30,4 +30,8 @@ func main() {
 	v.Scale(10)
 	// Scale(v, 10)
 	fmt.Println(v.Abs())
+	a := 1
+	var b *int
+	b = &a
+	fmt.Println(*b)
 }
