@@ -34,4 +34,10 @@ func main() {
 	for i, r := range s{
 		fmt.Printf("index: %d, value: %d \n", i, r)
 	}
+
+	var a = []int {1, 2, 3}
+	cap(a) = 5
+	fmt.Println(len(a), cap(a))
+	a = a[:2]
+	fmt.Println(a)
 }
