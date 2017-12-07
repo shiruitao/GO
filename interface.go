@@ -23,7 +23,7 @@ func (f MyFloat) Abs() float64 {
 	return float64(f)
 }
 
-func (v *Vertex) Abs() float64 {
+func (v Vertex) Abs() float64 {
 	return math.Sqrt(v.X * v.X + v.Y * v.Y)
 }
 func main() {
@@ -32,7 +32,7 @@ func main() {
 	f := MyFloat(math.Sqrt2)
 	a = f
 	v := Vertex{3, 4}
-	b = &v
+	b = v
 
 	fmt.Println(a.Abs())
 	fmt.Println(b.Abs())
