@@ -12,9 +12,14 @@ type interfaceI interface {
 type interfaceII interface {
 	method()
 	sub()
+	// add()
 }
 
 type conflict struct{}
+
+func (this *conflict) add() {
+	fmt.Println("add()")
+}
 
 func (this *conflict) method() {
 	fmt.Println("method()")
@@ -28,20 +33,24 @@ func main()  {
 	var (
 		c	interface{}
 		ok	bool
-		i	interfaceI
+		// i	interfaceI
 		ii	interfaceII
 	)
 
-	c = &conflict{}
-	// fmt.Println()
+	ii = &conflict{}
 
+	// fmt.Println()
+	fmt.Println(ii.method())
 	//测试某个值是否实现了某个接口?
-	if i, ok = c.(interfaceI); ok {
-		i.method()
-		fmt.Println(i, ok)
-	}
-	if ii, ok = c.(interfaceII); ok {
-		ii.method()
-		fmt.Println(ii, ok)
-	}
+	// if i, ok = c.(interfaceI); ok {
+	// 	i.method()
+	// 	fmt.Println(i, ok)
+	// }
+	// if ii, ok = c.(interfaceII); ok {
+	// 	ii.sub()
+	// 	// fmt.Println(ii, ok)
+	// }
+	// a := conflict{}
+	// ii = &a
+	// fmt.Println(ii.method())
 }
