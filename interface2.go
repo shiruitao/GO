@@ -12,13 +12,10 @@ type interfaceI interface {
 type interfaceII interface {
 	method()
 	sub()
+	// add()
 }
 
 type conflict struct{}
-
-func (this *conflict) add() {
-	fmt.Println("add()")
-}
 
 func (this *conflict) method() {
 	fmt.Println("method()")
@@ -36,11 +33,11 @@ func main()  {
 		ii	interfaceII
 	)
 
-	// ii = &conflict{}
+	ii = &conflict{}
 
 	// fmt.Println()
 	fmt.Println(ii.method())
-	// 测试某个值是否实现了某个接口?
+	//测试某个值是否实现了某个接口?
 	// if i, ok = c.(interfaceI); ok {
 	// 	i.method()
 	// 	fmt.Println(i, ok)
@@ -49,7 +46,7 @@ func main()  {
 	// 	ii.sub()
 	// 	// fmt.Println(ii, ok)
 	// }
-	a := conflict{}
-	ii = &a
-	fmt.Println(ii.method())
+	// a := conflict{}
+	// ii = &a
+	// fmt.Println(ii.method())
 }
