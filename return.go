@@ -12,6 +12,10 @@ func test() bool {
 }
 
 func main() {
-	fmt.Println(test())
-	fmt.Println(i)
+	if test() {
+		fmt.Println(i)
+	}
+	if test() {
+		fmt.Println(i)
+	}
 }
