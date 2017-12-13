@@ -11,6 +11,9 @@ import (
 type Abser interface {
 	Abs() float64
 }
+type Abser1 interface {
+	Abs1() float64
+}
 type Vertex struct {
 	X, Y float64
 }
@@ -23,17 +26,17 @@ func (f MyFloat) Abs() float64 {
 	return float64(f)
 }
 
-func (v Vertex) Abs() float64 {
+func (v Vertex) Abs1() float64 {
 	return math.Sqrt(v.X * v.X + v.Y * v.Y)
 }
 func main() {
-	var a, b Abser
-
+	var a Abser
+	var b Abser1
 	f := MyFloat(math.Sqrt2)
 	a = f
 	v := Vertex{3, 4}
 	b = v
 
 	fmt.Println(a.Abs())
-	fmt.Println(b.Abs())
+	fmt.Println(b.Abs1())
 }
