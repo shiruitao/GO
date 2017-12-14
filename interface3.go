@@ -25,7 +25,6 @@ func (f F) M() {
 
 func main() {
 	var i I
-
 	i = T{"Hello"}
 	// describe(i)
 	i.M()
@@ -34,7 +33,6 @@ func main() {
 	//describe(i)
 	//i.M()
 }
-
 func describe(i I) {
 	fmt.Printf("(%v, %T)\n", i, i)
 }
