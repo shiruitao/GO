@@ -10,7 +10,13 @@ func test() bool {
 	i += 1
 	return i > 1
 }
-
+func a() int {
+	a := 2
+	if a > 1 {
+		return 0
+	}
+	return a
+}
 func main() {
 	if test() {
 		fmt.Println(i)
@@ -18,4 +24,5 @@ func main() {
 	if test() {
 		fmt.Println(i)
 	}
+	fmt.Println(a())
 }
