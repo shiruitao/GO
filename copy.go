@@ -9,7 +9,7 @@ var a = []int{0, 1, 2, 3, 4, 5, 6, 7}
 
 var s = make([]int, 6)
 
-// 源长度为8，目标为6，只会复制前6个
+// 源长度为8,目标为6,只会复制前6个
 n1 := copy(s, a)
 fmt.Println("s - ", s)
 fmt.Println("n1 - ", n1)
