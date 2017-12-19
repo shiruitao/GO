@@ -14,7 +14,7 @@ n1 := copy(s, a)
 fmt.Println("s - ", s)
 fmt.Println("n1 - ", n1)
 
-// 源长为7，目标为6，复制索引1到6
+// 源长为7,目标为6,复制索引1到6
 n2 := copy(s, a[1:])
 
 fmt.Println("s - ", s)
