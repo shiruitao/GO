@@ -31,9 +31,7 @@ fmt.Println("n3 - ", n3)
 
 // 将源中的索引5,6,7复制到目标中的索引3,4,5
 n4 := copy(s[3:], a[5:])
-
 fmt.Println("s - ", s)
-
 fmt.Println("n4 - ", n4)
 
 }
