@@ -24,31 +24,47 @@
 
 /*
  * Revision History:
- *     Initial: 2018/01/22        Shi Ruitao
+ *     Initial: 2018/01/31        Shi Ruitao
  */
 
 package main
 
 import (
-	"github.com/fengyfei/gu/libs/crawler"
-	//"github.com/fengyfei/gu/libs/crawler/segmentf"
-	"github.com/shiruitao/12306/lib/blog"
+	"fmt"
+	"encoding/json"
 )
 
+// json.Marshal() 用于将节结构转化为json
+// json.Unmarshal() 将json转化为对象
+
+type User struct {
+	//结构字段必须是首字母大写
+	Name  string   `json:"name"` //``中的字段用于指定json键名，若不指定，则使用结构名
+	Age   int      `json:"age"`
+	Sex   string   `json:"sex"`
+}
+
 func main() {
-	var call crawler.Crawler
-	// call = devto.NewDevToCrawler("go")
+	user := &User{"tang", 20, "male"}
+	fmt.Println(user)
 
-	call = blog.NewBlogCrawler()
+	//将结构转化为json
+	user_json, err := json.Marshal(user)
+	if err != nil {
+		return
+	}
 
-	//call = google.NewGolangBlogCrawler()
+	//需强制转化为string类型，若不强转，则输出byte数组
+	fmt.Println(string(user_json))
 
-	//call = github.NewTrendingCrawler("")
+	//将json转回结构
+	user_ := &User{}
+	//第一个参数为要处理的json，第二个参数用于接收处理的结果，需指定类型
+	err_ := json.Unmarshal(user_json, user_)
 
-	//call = gocn.NewGoCNCrawler()
+	if err_ != nil {
+		return
+	}
 
-	//call = lagou.NewLaGouCrawler("erlang")
-	//call = segmentf.NewSegmentCrawler()
-	crawler.StartCrawler(call)
-
+	fmt.Println(user_)
 }
