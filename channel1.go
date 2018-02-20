@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func sum(arrays []int, ch chan int) {
     //fmt.Println(arrays)
@@ -19,10 +21,7 @@ func main() {
         go sum(arrayInt[length - t:], arrayChan)
     }
 
-    //arrayResult := [15]int{}
     for i := 0; i < 15; i++ {
-		//arrayResult[i] = <-arrayChan
-		//fmt.Println(arrayResult)
 		fmt.Println(<-arrayChan)
     }
     
