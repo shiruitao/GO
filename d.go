@@ -6,13 +6,13 @@ package main
 
 import "fmt"
 
-type Vertex struct {
+type vertex struct {
 	X int
 	Y int
 }
 
 func main() {
-	v := Vertex{1, 2}
+	v := vertex{1, 2}
 	p := &v
 	fmt.Println(p)
 	p.X = 1e1
