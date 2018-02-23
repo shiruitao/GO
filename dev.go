@@ -33,15 +33,16 @@ import (
 	"github.com/fengyfei/gu/libs/crawler"
 	//"github.com/fengyfei/gu/libs/crawler/segmentf"
 	"github.com/shiruitao/12306/lib/blog"
+	"github.com/fengyfei/gu/libs/crawler/google"
 )
 
 func main() {
 	var call crawler.Crawler
 	// call = devto.NewDevToCrawler("go")
 
-	call = blog.NewBlogCrawler()
+	//call = blog.NewBlogCrawler()
 
-	//call = google.NewGolangBlogCrawler()
+	call = google.NewGolangBlogCrawler()
 
 	//call = github.NewTrendingCrawler("")
 
