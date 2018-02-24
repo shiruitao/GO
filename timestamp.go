@@ -38,13 +38,14 @@ import (
 func main() {
 	wg := &sync.WaitGroup{}
 	start := time.Now().UnixNano()
-	wg.Add(1)
+	for i := 1; i < 8; i++ {
+		wg.Add(1)
 
-	go func() {
-		fmt.Println("run")
-		wg.Done()
-	}()
-
+		go func() {
+			fmt.Println("run")
+			wg.Done()
+		}()
+	}
 	wg.Wait()
 	end := time.Now().UnixNano()
 	fmt.Println(float64(end - start) / 1000000000)
