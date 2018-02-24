@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2018 Shi Ruitao.
+ * Copyright (c) 2018 Shi Ruitao
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -29,25 +29,9 @@
 
 package main
 
-import (
-	"fmt"
-	"time"
-	"sync"
-)
+import "fmt"
 
 func main() {
-	wg := &sync.WaitGroup{}
-	start := time.Now().UnixNano()
-	for i := 1; i < 8; i++ {
-		wg.Add(1)
-
-		go func() {
-			fmt.Println("run")
-			wg.Done()
-		}()
-	}
-	wg.Wait()
-	end := time.Now().UnixNano()
-	fmt.Println(float64(end - start) / 1000000000)
-	fmt.Println(5 * time.Second)
+	var buffer = []byte("shi ")
+	fmt.Println(len(buffer))
 }
