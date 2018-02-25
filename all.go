@@ -29,9 +29,63 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"path/filepath"
+	"os"
+)
+
+var bt = []byte("shi")
 
 func main() {
-	var buffer = []byte("shi ")
-	fmt.Println(len(buffer))
+	//var b []byte
+	//for i :=0 ; i < 257; i++ {
+	//	b = append(b, byte(i))
+	//}
+	//var c uint32
+	//v := int8(bt[1])
+	//fmt.Println(v)
+	//c = uint32(v)
+	//fmt.Println(c)
+	//hash32Len0to4(b)
+	//xor()
+	subDirToSkip := "segmentf"
+	dir := "GO"
+	err := filepath.Walk(dir, func(path string, info os.FileInfo, err error) error {
+		if err != nil {
+			fmt.Printf("prevent panic by handling failure accessing a path %q: %v\n", dir, err)
+			return err
+		}
+		if info.IsDir() && info.Name() == subDirToSkip {
+			fmt.Printf("skipping a dir without errors: %+v \n", info.Name())
+			return filepath.SkipDir
+		}
+		fmt.Printf("visited file: %q\n", path)
+		return nil
+	})
+
+	if err != nil {
+		fmt.Printf("error walking the path %q: %v\n", dir, err)
+	}
+}
+
+func hash32Len0to4(s []byte) {
+	slen := len(s)
+	b := uint32(0)
+	c := uint32(9)
+	for i := 0; i < slen; i++ {
+		v := int8(s[i])
+		b = (b * 0xcc9e2d51) + uint32(v)
+		//fmt.Println(b)
+		c ^= b
+		//fmt.Println(c)
+	}
+}
+
+func xor() {
+	const c1 uint32 = 0xcc9e2d51
+	var a uint32 = 5
+	var b uint32 = 6
+	a = (a * c1) ^ (b * c1)
+	//fmt.Println(a)
 }
