@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2018 Shi Ruitao
+ * Copyright (c) 2018 SmartestEE Co., Ltd..
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,42 +24,46 @@
 
 /*
  * Revision History:
- *     Initial: 2018/02/24        Shi Ruitao
+ *     Initial: 2018/02/28        Shi Ruitao
  */
 
 package main
 
 import (
-	"log"
-	"net/http"
-	"net/http/httputil"
-	"net/url"
-	"flag"
+	"time"
+	"fmt"
 )
 
-type handle struct {
-	reverseProxy string
-}
+var ch1 = make(chan int)
+var ch2 = make(chan int)
+var chs = []chan int{ch1, ch2}
 
-func (this *handle) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	remote, err := url.Parse(this.reverseProxy)
-	if err != nil {
-		log.Fatalln(err)
-	}
-	proxy := httputil.NewSingleHostReverseProxy(remote)
-	r.Host = remote.Host
-	proxy.ServeHTTP(w, r)
-	log.Println(r.RemoteAddr + " " + r.Method + " " + r.URL.String() + " " + r.Proto + " " + r.UserAgent())
-}
+var num = []int{0, 1, 2}
 
 func main() {
-	//bind := flag.String("l", "0.0.0.0:8888", "listen on ip:port")
-	remote := flag.String("r", "http://idea.lanyus.com:80", "reverse proxy addr")
-	flag.Parse()
-	log.Printf("Listening on %s, forwarding to %s", *bind, *remote)
-	h := &handle{reverseProxy: *remote}
-	err := http.ListenAndServe("0.0.0.0:8888", h)
-	if err != nil {
-		log.Fatalln("ListenAndServe: ", err)
+	go func() {
+		fmt.Println(<- chs[0])
+	}()
+	go func() {
+		fmt.Println(<- chs[1])
+	}()
+	select {
+	case getCh(0) <- getNumber(1):
+		fmt.Println("1th case is selected")
+	case getCh(1) <- getNumber(2):
+		fmt.Println("2th case is selected")
+	default:
+		fmt.Println("Default")
 	}
+	time.Sleep(1e9 * 2)
+}
+
+func getNumber(i int) int {
+	fmt.Printf("num[%d]\n", i)
+	return num[i]
+}
+
+func getCh(i int) chan int {
+	fmt.Printf("chs[%d]\n", i)
+	return chs[i]
 }
