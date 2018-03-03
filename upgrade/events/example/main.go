@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2018 SmartestEE Co., Ltd..
+ * Copyright (c) Shi Ruitao.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -33,14 +33,27 @@ import (
 	"sync"
 	"time"
 	"fmt"
-	"github.com/fengyfei/gu/libs/events"
+	"github.com/shiruitao/GO/upgrade/events"
 )
 
 func main() {
-	a := NewChannel(5)
+	a := events.NewChannel(5)
 	wg := sync.WaitGroup{}
 
 	wg.Add(2)
+
+	go func() {
+		for i := 0; i <= 10; i++ {
+			time.Sleep(500 * time.Millisecond)
+			var event interface{} = i
+			err := a.Send(event)
+			if err == events.ErrClosed {
+				break
+			}
+		}
+		wg.Done()
+		defer a.Close()
+	}()
 
 	go func() {
 		t1 := time.NewTimer(time.Second * 5)
@@ -61,19 +74,6 @@ func main() {
 				return
 			}
 		}
-	}()
-
-	go func() {
-		for i := 0; i <= 20; i++ {
-			time.Sleep(500 * time.Millisecond)
-			var event interface{} = i
-			err := a.Send(event)
-			if err == events.ErrClosed {
-				fmt.Println("执行")
-				break
-			}
-		}
-		wg.Done()
 	}()
 
 	wg.Wait()
