@@ -4,7 +4,9 @@
 
 package main
 
-import "fmt"
+import (
+    "fmt"
+)
 
 func main() {
     var a float32 = 1.1
