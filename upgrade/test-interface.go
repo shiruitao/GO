@@ -33,16 +33,34 @@ import (
 	"fmt"
 )
 
-func Foo(x interface{}) {
-	if x == nil {
-		fmt.Println("empty interface")
-		return
-	}
-	fmt.Println("non-empty interface")
-	fmt.Println(x)
+//func Foo(x interface{}) {
+//	if x == nil {
+//		fmt.Println("empty interface")
+//		return
+//	}
+//	fmt.Println("non-empty interface")
+//	fmt.Println(x)
+//}
+//
+//func main() {
+//	var x *int = nil
+//	Foo(x)
+//}
+type MyInterface interface {
+	Print()
+}
+
+type MyStruct struct{}
+
+func (ms MyStruct) Print() {
+	fmt.Println("1")
 }
 
 func main() {
-	var x *int = nil
-	Foo(x)
+	x := 1
+	var y interface{} = x
+	var s MyStruct
+	var t MyInterface = s
+	t.Print()
+	fmt.Println(y, t)
 }
