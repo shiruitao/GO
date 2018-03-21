@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) Shi Ruitao.
+ * Copyright (c) 2018 SmartestEE Co., Ltd..
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,21 +24,52 @@
 
 /*
  * Revision History:
- *     Initial: 2018/03/09        Shi Ruitao
+ *     Initial: 2018/03/21        Shi Ruitao
  */
 
-package main
+package gostudy
 
 import (
-	"github.com/shiruitao/GO/upgrade/gostudy"
+	"sync"
+	"fmt"
 )
 
-func main() {
-	//gostudy.Byte()
-	//gostudy.S1()
-	//gostudy.Go1()
-	//gostudy.Select()
-	//gostudy.Defer()
-	//gostudy.Slice()
-	gostudy.Map()
+type UserAges struct {
+	ages map[string]int
+	sync.Mutex
+}
+
+var wg = &sync.WaitGroup{}
+
+func (ua *UserAges) Add(name string, age int) {
+	ua.Lock()
+	defer ua.Unlock()
+	ua.ages[name] = age
+	wg.Done()
+}
+
+func (ua *UserAges) Get(name string) int {
+	//ua.Lock()
+	//defer ua.Unlock()
+
+	defer wg.Done()
+	for {
+		if age, ok := ua.ages[name]; ok {
+			fmt.Println(age)
+			return age
+		}
+	}
+	fmt.Println(-1)
+	return -1
+}
+
+func Map() {
+	wg.Add(2)
+	ua := UserAges{
+		make(map[string]int),
+		sync.Mutex{},
+	}
+	go ua.Add("wang", 20)
+	go ua.Get("wang")
+	defer wg.Wait()
 }
