@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) Shi Ruitao.
+ * Copyright (c) 2018 SmartestEE Co., Ltd..
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,23 +24,30 @@
 
 /*
  * Revision History:
- *     Initial: 2018/03/09        Shi Ruitao
+ *     Initial: 2018/03/22        Shi Ruitao
  */
 
-package main
+package gostudy
 
-import (
-	"github.com/shiruitao/GO/upgrade/gostudy"
-)
+import "fmt"
 
-func main() {
-	//gostudy.Byte()
-	//gostudy.S1()
-	//gostudy.Go1()
-	//gostudy.Select()
-	//gostudy.Defer()
-	//gostudy.Slice()
-	//gostudy.Map()
-	//gostudy.Chan()
-	gostudy.Function()
+type People1 interface {
+	Speak(string) string
+}
+
+type Student struct{}
+
+func (stu *Student) Speak(think string) (talk string) {
+	if think == "bullshit" {
+		talk = "You are a good boy"
+	} else {
+		talk = "hi"
+	}
+	return
+}
+
+func Function() {
+	var peo People1 = &Student{}
+	think := "bullshit"
+	fmt.Println(peo.Speak(think))
 }

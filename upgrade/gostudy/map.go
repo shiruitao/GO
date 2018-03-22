@@ -30,8 +30,9 @@
 package gostudy
 
 import (
-	"sync"
 	"fmt"
+	"sync"
+	"time"
 )
 
 type UserAges struct {
@@ -39,37 +40,31 @@ type UserAges struct {
 	sync.Mutex
 }
 
-var wg = &sync.WaitGroup{}
-
 func (ua *UserAges) Add(name string, age int) {
 	ua.Lock()
 	defer ua.Unlock()
 	ua.ages[name] = age
-	wg.Done()
 }
 
 func (ua *UserAges) Get(name string) int {
 	//ua.Lock()
 	//defer ua.Unlock()
 
-	defer wg.Done()
-	for {
-		if age, ok := ua.ages[name]; ok {
-			fmt.Println(age)
-			return age
-		}
+	if age, ok := ua.ages[name]; ok {
+		fmt.Println(age)
+		return age
 	}
 	fmt.Println(-1)
 	return -1
 }
 
 func Map() {
-	wg.Add(2)
 	ua := UserAges{
 		make(map[string]int),
 		sync.Mutex{},
 	}
-	go ua.Add("wang", 20)
 	go ua.Get("wang")
-	defer wg.Wait()
+	go ua.Add("wang", 20)
+
+	time.Sleep(time.Millisecond)
 }
