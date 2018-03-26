@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) Shi Ruitao.
+ * Copyright (c) 2018 SmartestEE Co., Ltd..
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,25 +24,46 @@
 
 /*
  * Revision History:
- *     Initial: 2018/03/09        Shi Ruitao
+ *     Initial: 2018/03/26        Shi Ruitao
  */
 
-package main
+package gostudy
 
 import (
-	"github.com/shiruitao/GO/upgrade/gostudy"
+	"io/ioutil"
+	"time"
+	"strconv"
+	"fmt"
+	"os"
 )
 
-func main() {
-	//gostudy.Byte()
-	//gostudy.S1()
-	//gostudy.Go1()
-	//gostudy.Select()
-	//gostudy.Defer()
-	//gostudy.Slice()
-	//gostudy.Map()
-	//gostudy.Chan()
-	//gostudy.Function()
-	//gostudy.Interface()
-	gostudy.Execute()
+func getNameByTime(path string, suffix string) string {
+	files, _ := ioutil.ReadDir(path)
+	fmt.Println(len(files))
+	for _, file:= range files {
+		fmt.Println(file.Name())
+	}
+	timeStamp := time.Now().Unix()
+	return strconv.FormatInt(timeStamp, 10) + strconv.Itoa(len(files)) + "." + suffix
+}
+
+func checkDir(path string) error {
+	_, err := os.Stat(path)
+
+	if err != nil {
+		if os.IsNotExist(err) {
+			err = os.MkdirAll(path, 0777)
+
+			if err != nil {
+				return err
+			}
+		}
+	}
+
+	return err
+}
+
+func Execute() {
+	fmt.Println(getNameByTime("/users/a1/github", "a"))
+	_ = checkDir("/users/a1/github/123")
 }
