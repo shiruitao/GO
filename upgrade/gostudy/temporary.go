@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) Shi Ruitao.
+ * Copyright (c) 2018 SmartestEE Co., Ltd..
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,27 +24,24 @@
 
 /*
  * Revision History:
- *     Initial: 2018/03/09        Shi Ruitao
+ *     Initial: 2018/04/01        Shi Ruitao
  */
 
-package main
+package gostudy
 
 import (
-	"github.com/shiruitao/GO/upgrade/gostudy"
+	"fmt"
 )
 
-func main() {
-	//gostudy.Byte()
-	//gostudy.S1()
-	//gostudy.Go1()
-	//gostudy.Select()
-	//gostudy.Defer()
-	//gostudy.Slice()
-	//gostudy.Map()
-	//gostudy.Chan()
-	//gostudy.Function()
-	//gostudy.Interface()
-	//gostudy.Execute()
-	//gostudy.Time()
-	gostudy.Temporary()
+type people struct {
+	Name string
+}
+
+func (p *people) String() string {
+	return fmt.Sprintf("print: %#v", p)
+}
+
+func Temporary() {
+	p := people{"shiruitao"}
+	fmt.Println(p)
 }
