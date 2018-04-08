@@ -42,6 +42,7 @@ func (p *people) String() string {
 }
 
 func Temporary() {
-	p := people{"shiruitao"}
-	fmt.Println(p)
+	fmt.Printf("%#v\n", people{})
+	p := &people{"shiruitao"}
+	fmt.Println(p.String())
 }
