@@ -30,19 +30,22 @@
 package gostudy
 
 import (
+	"sync/atomic"
 	"fmt"
 )
 
-type people struct {
-	Name string
-}
+var value int32
 
-func (p *people) String() string {
-	return fmt.Sprintf("print: %#v", p)
+func setValue(delta int32) {
+ 	var v int32
+	v = 10
+	if boll := atomic.CompareAndSwapInt32(&value, v, delta); boll {
+		fmt.Println(boll, v, value)
+	} else {
+		fmt.Println(boll, v, value)
+	}
 }
 
 func Temporary() {
-	fmt.Printf("%#v\n", people{})
-	p := &people{"shiruitao"}
-	fmt.Println(p.String())
+	setValue(0)
 }
