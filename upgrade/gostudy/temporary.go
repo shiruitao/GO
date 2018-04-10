@@ -30,22 +30,47 @@
 package gostudy
 
 import (
-	"sync/atomic"
 	"fmt"
+	"time"
 )
 
-var value int32
+type Project struct{}
 
-func setValue(delta int32) {
- 	var v int32
-	v = 10
-	if boll := atomic.CompareAndSwapInt32(&value, v, delta); boll {
-		fmt.Println(boll, v, value)
-	} else {
-		fmt.Println(boll, v, value)
+func (p *Project) deferError() {
+	if err := recover(); err != nil {
+		fmt.Println("recover: ", err)
 	}
 }
 
+func (p *Project) exec(msgchan chan interface{}) {
+	for msg := range msgchan {
+		fmt.Println("msg:", msg)
+	}
+}
+
+func (p *Project) run(msgchan chan interface{}) {
+	for {
+		go func() {
+			p.exec(msgchan)
+			defer p.deferError()
+		}()
+		time.Sleep(time.Second * 2)
+	}
+}
+
+func (p *Project) Main() {
+	a := make(chan interface{}, 100)
+	go p.run(a)
+	go func() {
+		for {
+			a <- 1
+			time.Sleep(time.Second)
+		}
+	}()
+	time.Sleep(time.Second * 100)
+}
+
 func Temporary() {
-	setValue(0)
+	p := new(Project)
+	p.Main()
 }
