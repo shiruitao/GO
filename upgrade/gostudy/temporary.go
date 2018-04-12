@@ -31,46 +31,22 @@ package gostudy
 
 import (
 	"fmt"
-	"time"
 )
 
-type Project struct{}
-
-func (p *Project) deferError() {
-	if err := recover(); err != nil {
-		fmt.Println("recover: ", err)
-	}
+type student struct {
+	Name string
 }
 
-func (p *Project) exec(msgchan chan interface{}) {
-	for msg := range msgchan {
-		fmt.Println("msg:", msg)
+func a(v interface{}) {
+	switch msg := v.(type) {
+	case *student, student:
+		fmt.Println("1", msg)
+		fmt.Println("2", msg)
+	default:
+		fmt.Println("3", msg)
 	}
-}
-
-func (p *Project) run(msgchan chan interface{}) {
-	for {
-		go func() {
-			p.exec(msgchan)
-			defer p.deferError()
-		}()
-		time.Sleep(time.Second * 2)
-	}
-}
-
-func (p *Project) Main() {
-	a := make(chan interface{}, 100)
-	go p.run(a)
-	go func() {
-		for {
-			a <- 1
-			time.Sleep(time.Second)
-		}
-	}()
-	time.Sleep(time.Second * 100)
 }
 
 func Temporary() {
-	p := new(Project)
-	p.Main()
+	a(student{})
 }
