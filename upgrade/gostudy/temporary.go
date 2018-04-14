@@ -41,9 +41,8 @@ func a(v interface{}) {
 	switch msg := v.(type) {
 	case *student, student:
 		fmt.Println("1", msg)
-		fmt.Println("2", msg)
 	default:
-		fmt.Println("3", msg)
+		fmt.Println("2", msg)
 	}
 }
 
