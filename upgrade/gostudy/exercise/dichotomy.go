@@ -31,6 +31,25 @@ package exercise
 
 import "fmt"
 
-func Dichotomy() {
-	fmt.Println(float32(125)/2)
+func Dichotomy(list []int, find int) {
+	low := 0
+	high := len(list) - 1
+
+	for {
+		mid := (low + high) / 2
+
+		if list[mid] == find {
+			fmt.Println(mid)
+			return
+		}
+		if list[mid] < find {
+			low = mid + 1
+		}
+		if list[mid] > find {
+			high = mid - 1
+		} else {
+			fmt.Println("not fount!")
+			return
+		}
+	}
 }

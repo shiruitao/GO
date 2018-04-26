@@ -34,6 +34,8 @@ import (
 )
 
 func main() {
+
+	list := []int{1, 3, 5, 6, 7, 8, 9, 10, 11}
 	//gostudy.Byte()
 	//gostudy.S1()
 	//gostudy.Go1()
@@ -46,6 +48,6 @@ func main() {
 	//gostudy.Interface()
 	//gostudy.Execute()
 	//gostudy.Time()
-	exercise.Dichotomy()
+	exercise.Dichotomy(list, 1)
 	//exercise.Temporary()
 }
