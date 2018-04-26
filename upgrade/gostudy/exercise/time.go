@@ -24,47 +24,19 @@
 
 /*
  * Revision History:
- *     Initial: 2018/03/21        Shi Ruitao
+ *     Initial: 2018/03/29        Shi Ruitao
  */
 
-package gostudy
+package exercise
 
 import (
-	"fmt"
-	"sync"
 	"time"
+	"fmt"
 )
 
-type UserAges struct {
-	ages map[string]int
-	sync.Mutex
-}
-
-func (ua *UserAges) Add(name string, age int) {
-	ua.Lock()
-	defer ua.Unlock()
-	ua.ages[name] = age
-}
-
-func (ua *UserAges) Get(name string) int {
-	//ua.Lock()
-	//defer ua.Unlock()
-
-	if age, ok := ua.ages[name]; ok {
-		fmt.Println(age)
-		return age
-	}
-	fmt.Println(-1)
-	return -1
-}
-
-func Map() {
-	ua := UserAges{
-		make(map[string]int),
-		sync.Mutex{},
-	}
-	go ua.Get("wang")
-	go ua.Add("wang", 20)
-
-	time.Sleep(time.Millisecond)
+func Time() {
+	var t time.Time
+	var t1 time.Timer
+	fmt.Println(t)
+	fmt.Println(t1)
 }

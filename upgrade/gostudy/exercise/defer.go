@@ -24,39 +24,24 @@
 
 /*
  * Revision History:
- *     Initial: 2018/03/19        Shi Ruitao
+ *     Initial: 2018/03/21        Shi Ruitao
  */
 
-package gostudy
+package exercise
 
 import "fmt"
 
-type People struct{}
-
-func (p *People) ShowA() {
-	fmt.Println("showA")
-	p.ShowB()
+func calc(index string, a, b int) int {
+	ret := a + b
+	fmt.Println(index, a, b, ret)
+	return ret
 }
 
-func (p *People) ShowB() {
-	fmt.Println("showB")
-}
-
-type Teacher struct {
-	People
-}
-
-type A struct {
-	Teacher
-}
-
-func (t *Teacher) ShowB() {
-	fmt.Println("teacher showB")
-}
-
-func Go1() {
-	t := Teacher{}
-	t.ShowA()
-	a := A{}
-	a.ShowA()
+func Defer() {
+	a := 1
+	b := 2
+	defer calc("1", a, calc("10", a, b))
+	a = 0
+	defer calc("2", a, calc("20", a, b))
+	b = 1
 }

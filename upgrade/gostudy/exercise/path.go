@@ -24,24 +24,46 @@
 
 /*
  * Revision History:
- *     Initial: 2018/03/21        Shi Ruitao
+ *     Initial: 2018/03/26        Shi Ruitao
  */
 
-package gostudy
+package exercise
 
-import "fmt"
+import (
+	"io/ioutil"
+	"time"
+	"strconv"
+	"fmt"
+	"os"
+)
 
-func calc(index string, a, b int) int {
-	ret := a + b
-	fmt.Println(index, a, b, ret)
-	return ret
+func getNameByTime(path string, suffix string) string {
+	files, _ := ioutil.ReadDir(path)
+	fmt.Println(len(files))
+	for _, file:= range files {
+		fmt.Println(file.Name())
+	}
+	timeStamp := time.Now().Unix()
+	return strconv.FormatInt(timeStamp, 10) + strconv.Itoa(len(files)) + "." + suffix
 }
 
-func Defer() {
-	a := 1
-	b := 2
-	defer calc("1", a, calc("10", a, b))
-	a = 0
-	defer calc("2", a, calc("20", a, b))
-	b = 1
+func checkDir(path string) error {
+	_, err := os.Stat(path)
+
+	if err != nil {
+		if os.IsNotExist(err) {
+			err = os.MkdirAll(path, 0777)
+
+			if err != nil {
+				return err
+			}
+		}
+	}
+
+	return err
+}
+
+func Execute() {
+	fmt.Println(getNameByTime("/users/a1/github", "a"))
+	_ = checkDir("/users/a1/github/123")
 }

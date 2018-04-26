@@ -24,46 +24,13 @@
 
 /*
  * Revision History:
- *     Initial: 2018/03/26        Shi Ruitao
+ *     Initial: 2018/04/26        Shi Ruitao
  */
 
-package gostudy
+package exercise
 
-import (
-	"io/ioutil"
-	"time"
-	"strconv"
-	"fmt"
-	"os"
-)
+import "fmt"
 
-func getNameByTime(path string, suffix string) string {
-	files, _ := ioutil.ReadDir(path)
-	fmt.Println(len(files))
-	for _, file:= range files {
-		fmt.Println(file.Name())
-	}
-	timeStamp := time.Now().Unix()
-	return strconv.FormatInt(timeStamp, 10) + strconv.Itoa(len(files)) + "." + suffix
-}
-
-func checkDir(path string) error {
-	_, err := os.Stat(path)
-
-	if err != nil {
-		if os.IsNotExist(err) {
-			err = os.MkdirAll(path, 0777)
-
-			if err != nil {
-				return err
-			}
-		}
-	}
-
-	return err
-}
-
-func Execute() {
-	fmt.Println(getNameByTime("/users/a1/github", "a"))
-	_ = checkDir("/users/a1/github/123")
+func Dichotomy() {
+	fmt.Println(float32(125)/2)
 }

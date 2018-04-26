@@ -24,30 +24,17 @@
 
 /*
  * Revision History:
- *     Initial: 2018/03/22        Shi Ruitao
+ *     Initial: 2018/04/01        Shi Ruitao
  */
 
-package gostudy
+package exercise
 
-import "fmt"
+import (
+	"fmt"
+)
 
-type People1 interface {
-	Speak(string) string
-}
-
-type Student struct{}
-
-func (stu *Student) Speak(think string) (talk string) {
-	if think == "bullshit" {
-		talk = "You are a good boy"
-	} else {
-		talk = "hi"
-	}
-	return
-}
-
-func Function() {
-	var peo People1 = &Student{}
-	think := "bullshit"
-	fmt.Println(peo.Speak(think))
+func Temporary() {
+	ch := make(chan int, 2)
+	ch <- 1
+	fmt.Println(<-ch)
 }

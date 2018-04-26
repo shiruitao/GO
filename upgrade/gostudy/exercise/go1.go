@@ -24,19 +24,39 @@
 
 /*
  * Revision History:
- *     Initial: 2018/03/29        Shi Ruitao
+ *     Initial: 2018/03/19        Shi Ruitao
  */
 
-package gostudy
+package exercise
 
-import (
-	"time"
-	"fmt"
-)
+import "fmt"
 
-func Time() {
-	var t time.Time
-	var t1 time.Timer
-	fmt.Println(t)
-	fmt.Println(t1)
+type People struct{}
+
+func (p *People) ShowA() {
+	fmt.Println("showA")
+	p.ShowB()
+}
+
+func (p *People) ShowB() {
+	fmt.Println("showB")
+}
+
+type Teacher struct {
+	People
+}
+
+type A struct {
+	Teacher
+}
+
+func (t *Teacher) ShowB() {
+	fmt.Println("teacher showB")
+}
+
+func Go1() {
+	t := Teacher{}
+	t.ShowA()
+	a := A{}
+	a.ShowA()
 }

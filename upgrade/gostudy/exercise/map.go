@@ -27,24 +27,44 @@
  *     Initial: 2018/03/21        Shi Ruitao
  */
 
-package gostudy
+package exercise
 
 import (
 	"fmt"
-	"runtime"
+	"sync"
+	"time"
 )
 
-func Select() {
-	runtime.GOMAXPROCS(1)
+type UserAges struct {
+	ages map[string]int
+	sync.Mutex
+}
 
-	int_chan := make(chan int, 1)
-	string_chan := make(chan string, 1)
-	int_chan <- 1
-	string_chan <- "hello"
-	select {
-	case value := <-int_chan:
-		fmt.Println(value)
-	case value := <-string_chan:
-		panic(value)
+func (ua *UserAges) Add(name string, age int) {
+	ua.Lock()
+	defer ua.Unlock()
+	ua.ages[name] = age
+}
+
+func (ua *UserAges) Get(name string) int {
+	//ua.Lock()
+	//defer ua.Unlock()
+
+	if age, ok := ua.ages[name]; ok {
+		fmt.Println(age)
+		return age
 	}
+	fmt.Println(-1)
+	return -1
+}
+
+func Map() {
+	ua := UserAges{
+		make(map[string]int),
+		sync.Mutex{},
+	}
+	go ua.Get("wang")
+	go ua.Add("wang", 20)
+
+	time.Sleep(time.Millisecond)
 }

@@ -24,33 +24,30 @@
 
 /*
  * Revision History:
- *     Initial: 2018/03/19        Shi Ruitao
+ *     Initial: 2018/03/22        Shi Ruitao
  */
 
-package gostudy
+package exercise
 
-import (
-	"fmt"
-	"runtime"
-	"sync"
-)
+import "fmt"
 
-func S1() {
-	num := runtime.GOMAXPROCS(1)
-	fmt.Println(num)
-	wg := sync.WaitGroup{}
-	wg.Add(20)
-	for i := 0; i < 10; i++ {
-		go func() {
-			fmt.Println("A: ", i)
-			wg.Done()
-		}()
+type People1 interface {
+	Speak(string) string
+}
+
+type Student struct{}
+
+func (stu *Student) Speak(think string) (talk string) {
+	if think == "bullshit" {
+		talk = "You are a good boy"
+	} else {
+		talk = "hi"
 	}
-	for i := 0; i < 10; i++ {
-		go func(i int) {
-			fmt.Println("B: ", i)
-			wg.Done()
-		}(i)
-	}
-	wg.Wait()
+	return
+}
+
+func Function() {
+	var peo People1 = &Student{}
+	think := "bullshit"
+	fmt.Println(peo.Speak(think))
 }

@@ -24,46 +24,21 @@
 
 /*
  * Revision History:
- *     Initial: 2018/03/22        Shi Ruitao
+ *     Initial: 2018/03/21        Shi Ruitao
  */
 
-package gostudy
+package exercise
 
-import (
-	"fmt"
-	"sync"
-	"time"
-)
+import "fmt"
 
-type threadSafeSet struct {
-	sync.RWMutex
-	s []interface{}
-}
+func Slice() {
+	s := make([]int, 5)
+	s = append(s, 1, 2, 3)
+	fmt.Println(s)
+	// [0 0 0 0 0 1 2 3]
 
-func (set *threadSafeSet) Iter() <-chan interface{} {
-	//ch := make(chan interface{}) // 解除注释看看！
-	ch := make(chan interface{}, len(set.s))
-	go func() {
-		set.RLock()
-
-		for elem, value := range set.s {
-			ch <- elem
-			fmt.Println("Iter:", elem, value)
-		}
-
-		close(ch)
-		set.RUnlock()
-
-	}()
-	return ch
-}
-
-func Chan() {
-
-	th := threadSafeSet{
-		s: []interface{}{"1", "2"},
-	}
-	v := <-th.Iter()
-	fmt.Printf("%s%v\n", "ch:", v)
-	time.Sleep(time.Millisecond)
+	s = make([]int, 0)
+	s = append(s, 1, 2, 3)
+	fmt.Println(s)
+	// [1 2 3]
 }

@@ -24,28 +24,33 @@
 
 /*
  * Revision History:
- *     Initial: 2018/04/01        Shi Ruitao
+ *     Initial: 2018/03/19        Shi Ruitao
  */
 
-package gostudy
+package exercise
 
 import (
 	"fmt"
+	"runtime"
+	"sync"
 )
 
-type student struct {
-	Name string
-}
-
-func a(v interface{}) {
-	switch msg := v.(type) {
-	case *student, student:
-		fmt.Println("1", msg)
-	default:
-		fmt.Println("2", msg)
+func S1() {
+	num := runtime.GOMAXPROCS(1)
+	fmt.Println(num)
+	wg := sync.WaitGroup{}
+	wg.Add(20)
+	for i := 0; i < 10; i++ {
+		go func() {
+			fmt.Println("A: ", i)
+			wg.Done()
+		}()
 	}
-}
-
-func Temporary() {
-	a(student{})
+	for i := 0; i < 10; i++ {
+		go func(i int) {
+			fmt.Println("B: ", i)
+			wg.Done()
+		}(i)
+	}
+	wg.Wait()
 }

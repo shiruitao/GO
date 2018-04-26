@@ -27,7 +27,7 @@
  *     Initial: 2018/03/22        Shi Ruitao
  */
 
-package gostudy
+package exercise
 
 import (
 	"fmt"
