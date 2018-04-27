@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) Shi Ruitao.
+ * Copyright (c) 2018 SmartestEE Co., Ltd..
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,30 +24,16 @@
 
 /*
  * Revision History:
- *     Initial: 2018/03/09        Shi Ruitao
+ *     Initial: 2018/04/27        Shi Ruitao
  */
 
-package main
+package exercise
 
 import (
-	"github.com/shiruitao/GO/upgrade/gostudy/exercise"
+	"fmt"
 )
-var list = []int{1, 3, 5, 6, 7, 8, 9, 10, 11}
-func main() {
 
-	//gostudy.Byte()
-	//gostudy.S1()
-	//gostudy.Go1()
-	//gostudy.Select()
-	//gostudy.Defer()
-	//gostudy.Slice()
-	//gostudy.Map()
-	//gostudy.Chan()
-	//gostudy.Function()
-	//gostudy.Interface()
-	//gostudy.Execute()
-	//gostudy.Time()
-	//exercise.Dichotomy(list, 1)
-	//exercise.Temporary()
-	exercise.Factorial()
+func Factorial() {
+	list := []int{1, 2, 3, 4, 5, 6}
+	fmt.Println(list[1:3])
 }
