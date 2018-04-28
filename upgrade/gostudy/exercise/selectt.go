@@ -33,7 +33,26 @@ import (
 	"fmt"
 )
 
-func Factorial() {
-	list := []int{1, 2, 3, 4, 5, 6}
-	fmt.Println(list[1:3])
+func findSmallest(arr []int) int {
+	small := arr[0]
+	smallIndex := 0
+	for i := 1; i < len(arr); i++ {
+		if arr[i] < small {
+			small = arr[i]
+			smallIndex = i
+		}
+	}
+	return smallIndex
+}
+
+func Selectt(arr []int) {
+	var newArr []int
+	j := len(arr)
+	for i := 0; i < j; i++ {
+		smallIndex := findSmallest(arr)
+		newArr = append(newArr, arr[smallIndex])
+		arr = append(arr[: smallIndex], arr[smallIndex + 1 :]...)
+		//arr = arr[:smallIndex+copy(arr[smallIndex:], arr[smallIndex+1:])]
+	}
+	fmt.Println(newArr)
 }

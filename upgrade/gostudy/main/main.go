@@ -32,7 +32,7 @@ package main
 import (
 	"github.com/shiruitao/GO/upgrade/gostudy/exercise"
 )
-var list = []int{1, 3, 5, 6, 7, 8, 9, 10, 11}
+var list = []int{8, 9, 10, 11, 1, 3, 5, 6, 7,}
 func main() {
 
 	//gostudy.Byte()
@@ -49,5 +49,5 @@ func main() {
 	//gostudy.Time()
 	//exercise.Dichotomy(list, 1)
 	//exercise.Temporary()
-	exercise.Factorial()
+	exercise.Selectt(list)
 }
