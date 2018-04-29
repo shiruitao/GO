@@ -50,4 +50,5 @@ func main() {
 	//exercise.Dichotomy(list, 1)
 	//exercise.Temporary()
 	exercise.Selectt(list)
+	//exercise.Time()
 }
