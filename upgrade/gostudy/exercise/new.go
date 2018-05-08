@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) Shi Ruitao.
+ * Copyright (c) 2018 SmartestEE Co., Ltd..
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,32 +24,27 @@
 
 /*
  * Revision History:
- *     Initial: 2018/03/09        Shi Ruitao
+ *     Initial: 2018/05/08        Shi Ruitao
  */
 
-package main
+package exercise
 
-import (
-	"github.com/shiruitao/GO/upgrade/gostudy/exercise"
-)
-var list = []int{8, 9, 10, 11, 1, 3, 5, 6, 7, 11}
-func main() {
+import "fmt"
 
-	//gostudy.Byte()
-	//gostudy.S1()
-	//gostudy.Go1()
-	//gostudy.Select()
-	//gostudy.Defer()
-	//gostudy.Slice()
-	//gostudy.Map()
-	//gostudy.Chan()
-	//gostudy.Function()
-	//gostudy.Interface()
-	//gostudy.Execute()
-	//gostudy.Time()
-	//exercise.Dichotomy(list, 1)
-	//exercise.Temporary()
-	//exercise.Selectt(list)
-	//exercise.Time()
-	exercise.Ring()
+type ring struct {
+	next, prev *ring
+	Value      interface{}
+}
+
+func Ring() {
+	r := new(ring)
+	p := r
+	for i := 1; i < 5; i++ {
+		p.next = &ring{prev: p}
+		p = p.next
+	}
+	p.next = r
+	r.prev = p
+
+	fmt.Println(r)
 }
