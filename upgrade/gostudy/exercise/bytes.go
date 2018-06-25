@@ -32,16 +32,18 @@ package exercise
 import (
 	"bytes"
 	"fmt"
-	"io"
-	"crypto/md5"
+	//"crypto/md5"
+	//"io"
 )
 
 func Byte()  {
 	a := bytes.Buffer{}
 	a.WriteString("0123ss")
 	a.WriteByte('r')
-	//fmt.Println(a.String())
-	w := md5.New()
-	io.WriteString(w, "sss")
-	fmt.Printf("%T %+v", w, w)
+	a.WriteByte('1')
+	fmt.Println(a.String())
+	//w := md5.New()
+	//io.WriteString(w, "sss")
+	////fmt.Println("%T %+v", w, w)
+	//fmt.Println(w)
 }

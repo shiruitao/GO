@@ -35,7 +35,7 @@ import (
 var list = []int{8, 9, 10, 11, 1, 3, 5, 6, 7, 11}
 func main() {
 
-	//gostudy.Byte()
+	//exercise.Byte()
 	//gostudy.S1()
 	//gostudy.Go1()
 	//gostudy.Select()
