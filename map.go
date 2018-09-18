@@ -31,6 +31,7 @@ func main() {
 	fmt.Println("The value:", m["Answer"])
 
 	m["Answer1"] = 48
+	m["Answer1"]++
 	fmt.Println("The value:", m["Answer1"])
 
 	delete(m, "Answer")

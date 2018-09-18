@@ -24,4 +24,5 @@ func main() {
 	//exercise.Time()
 	//exercise.Ring()
 	exercise.Dice()
+	exercise.Ctx()
 }
