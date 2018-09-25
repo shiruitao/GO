@@ -10,6 +10,8 @@ import (
 )
 
 func main() {
-	program.Slice()
-	program.Method()
+	//program.Slice()
+	//program.Method()
+	//program.Str()
+	program.Type()
 }
