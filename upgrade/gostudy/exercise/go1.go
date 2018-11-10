@@ -46,17 +46,17 @@ type Teacher struct {
 	People
 }
 
-type A struct {
-	Teacher
-}
+//type A struct {
+//	Teacher
+//}
 
 func (t *Teacher) ShowB() {
 	fmt.Println("teacher showB")
 }
 
-func Go1() {
-	t := Teacher{}
-	t.ShowA()
-	a := A{}
-	a.ShowA()
-}
+//func Go1() {
+//	t := Teacher{}
+//	t.ShowA()
+//	a := A{}
+//	a.ShowA()
+//}

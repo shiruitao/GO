@@ -23,6 +23,6 @@ func main() {
 	//exercise.Selectt(list)
 	//exercise.Time()
 	//exercise.Ring()
-	exercise.Dice()
+	//exercise.Dice()
 	exercise.Ctx()
 }
