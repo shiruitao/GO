@@ -1,11 +1,13 @@
 /*
 * Shi Ruitao 2017-12-12
-*/
+ */
 
 package ago
+
 import "fmt"
 
 var i int = 1
+
 func test() bool {
 	i += 1
 	return i > 1

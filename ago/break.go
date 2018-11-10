@@ -1,9 +1,11 @@
 /*
 * Shi Ruitao  2017-12-12
-*/
+ */
 
 package ago
+
 import "fmt"
+
 func main() {
 	var i int = 1
 	for {

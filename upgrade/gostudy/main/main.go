@@ -3,7 +3,9 @@ package main
 import (
 	"github.com/shiruitao/GO/upgrade/gostudy/exercise"
 )
+
 var list = []int{8, 9, 10, 11, 1, 3, 5, 6, 7, 11}
+
 func main() {
 
 	//exercise.Byte()

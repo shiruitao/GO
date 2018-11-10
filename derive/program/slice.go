@@ -9,7 +9,7 @@ import (
 	"fmt"
 )
 
-type Exercise struct {}
+type Exercise struct{}
 
 func Slice() {
 	si1 := []int{1, 2, 3, 4, 5, 6, 7, 8, 9}

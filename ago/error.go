@@ -1,17 +1,17 @@
 /*
 *   Shi Ruitao   2017-12-6
-*/
+ */
 package ago
 
 import (
-     "fmt"
-     "math"
+	"fmt"
+	"math"
 )
 
 type ErrNegativeSqrt float64
 
 func (e ErrNegativeSqrt) Error() string {
-     return "cannot Sqrt negative number:" + fmt.Sprint(float64(e))
+	return "cannot Sqrt negative number:" + fmt.Sprint(float64(e))
 }
 
 func Sqrt(f float64) (float64, error) {

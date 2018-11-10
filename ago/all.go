@@ -30,11 +30,11 @@
 package ago
 
 import (
+	"flag"
 	"log"
 	"net/http"
 	"net/http/httputil"
 	"net/url"
-	"flag"
 )
 
 type handle struct {

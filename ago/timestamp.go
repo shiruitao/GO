@@ -31,8 +31,8 @@ package ago
 
 import (
 	"fmt"
-	"time"
 	"sync"
+	"time"
 )
 
 func main() {
@@ -48,6 +48,6 @@ func main() {
 	}
 	wg.Wait()
 	end := time.Now().UnixNano()
-	fmt.Println(float64(end - start) / 1000000000)
+	fmt.Println(float64(end-start) / 1000000000)
 	fmt.Println(5 * time.Second)
 }

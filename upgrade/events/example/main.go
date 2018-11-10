@@ -30,10 +30,10 @@
 package main
 
 import (
-	"sync"
-	"time"
 	"fmt"
 	"github.com/shiruitao/GO/upgrade/events"
+	"sync"
+	"time"
 )
 
 func main() {
@@ -60,15 +60,15 @@ func main() {
 		flag := false
 		for {
 			select {
-			case c := <- a.Ch:
+			case c := <-a.Ch:
 				fmt.Println(c)
 				if !flag {
 					t1.Reset(time.Second * 5)
 				}
-			case <- a.Done():
+			case <-a.Done():
 				flag = true
 				break
-			case <- t1.C:
+			case <-t1.C:
 				wg.Done()
 				fmt.Println("finish")
 				return

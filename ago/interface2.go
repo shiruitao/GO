@@ -25,12 +25,12 @@ func (this *conflict) sub() {
 	fmt.Println("sub()")
 }
 
-func main()  {
+func main() {
 	var (
-		c	interface{}
-		ok	bool
+		c  interface{}
+		ok bool
 		// i	interfaceI
-		ii	interfaceII
+		ii interfaceII
 	)
 
 	ii = &conflict{}

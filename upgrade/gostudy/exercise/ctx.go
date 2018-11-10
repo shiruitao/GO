@@ -43,15 +43,15 @@ func Ctx() {
 
 func ysf(n int, m int) int {
 	var tmp int
-	if  n % m == 0 {
-		tmp = n/m
+	if n%m == 0 {
+		tmp = n / m
 	} else {
-		tmp = n/m+1
+		tmp = n/m + 1
 	}
 	fmt.Println("人数", tmp)
 	if tmp <= m+1 {
-		return (tmp + 1) * m - 1
+		return (tmp+1)*m - 1
 	}
-	path := ysf(tmp, m + 1)
-	return (path - 2) * m + 1
+	path := ysf(tmp, m+1)
+	return (path-2)*m + 1
 }

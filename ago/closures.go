@@ -1,8 +1,9 @@
 /*
 * Shi Ruitao 2017-12-8
-*/
+ */
 
 package ago
+
 import "fmt"
 
 func closed() func() func() int {
@@ -32,5 +33,5 @@ func main() {
 	fmt.Println(fun1())
 	fmt.Println(fun1())
 	fmt.Println(fun1())
-	
+
 }

@@ -1,6 +1,6 @@
 /*
 * Shi Ruitao 2017-12-4
-*/
+ */
 package ago
 
 import "fmt"

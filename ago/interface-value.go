@@ -1,11 +1,13 @@
 /*
 *Shi Ruitao 2017-12-5
-*/
+ */
 package ago
+
 import (
 	"fmt"
 	//"math"
 )
+
 type I interface {
 	M()
 }
@@ -16,6 +18,7 @@ type T struct {
 func (t *T) M() {
 	fmt.Println(t.S)
 }
+
 type F float64
 
 func (f F) M() {

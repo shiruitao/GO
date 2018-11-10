@@ -51,7 +51,7 @@ func Selectt(arr []int) {
 	for i := 0; i < j; i++ {
 		smallIndex := findSmallest(arr)
 		newArr = append(newArr, arr[smallIndex])
-		arr = append(arr[: smallIndex], arr[smallIndex + 1 :]...)
+		arr = append(arr[:smallIndex], arr[smallIndex+1:]...)
 		//arr = arr[:smallIndex+copy(arr[smallIndex:], arr[smallIndex+1:])]
 	}
 	fmt.Println(newArr)

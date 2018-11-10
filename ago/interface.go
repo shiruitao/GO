@@ -1,8 +1,9 @@
 /*
 *Shi Ruitao 2017-12-5
-*/
+ */
 
 package ago
+
 import (
 	"fmt"
 	"math"
@@ -27,7 +28,7 @@ func (f MyFloat) Abs() float64 {
 }
 
 func (v Vertex) Abs1() float64 {
-	return math.Sqrt(v.X * v.X + v.Y * v.Y)
+	return math.Sqrt(v.X*v.X + v.Y*v.Y)
 }
 func main() {
 	var a Abser

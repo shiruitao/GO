@@ -14,4 +14,6 @@ func main() {
 	sort.InsertSort()
 
 	sort.ShellSort()
+
+	sort.Bubble()
 }

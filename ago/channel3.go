@@ -30,8 +30,8 @@
 package ago
 
 import (
-	"time"
 	"fmt"
+	"time"
 )
 
 var ch1 = make(chan int)
@@ -42,10 +42,10 @@ var num = []int{0, 1, 2}
 
 func main() {
 	go func() {
-		fmt.Println(<- chs[0])
+		fmt.Println(<-chs[0])
 	}()
 	go func() {
-		fmt.Println(<- chs[1])
+		fmt.Println(<-chs[1])
 	}()
 	select {
 	case getCh(0) <- getNumber(1):

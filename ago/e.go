@@ -1,6 +1,6 @@
 /*
 * Shi Ruitao  2017-12-3
-*/
+ */
 
 package ago
 
@@ -31,11 +31,11 @@ func main() {
 	fmt.Printf("%d\n", s)
 	s = append(s, 3, 4)
 	fmt.Printf("s=%d, len=%d, cap=%d, \n", s, len(s), cap(s))
-	for i, r := range s{
+	for i, r := range s {
 		fmt.Printf("index: %d, value: %d \n", i, r)
 	}
 
-	var a = []int {1, 2, 3}
+	var a = []int{1, 2, 3}
 	cap(a) = 5
 	fmt.Println(len(a), cap(a))
 	a = a[:2]

@@ -30,11 +30,12 @@
 package ago
 
 import (
-	"net/http"
+	"fmt"
 	"io"
 	"io/ioutil"
-	"fmt"
+	"net/http"
 )
+
 var b io.Reader
 
 func main() {

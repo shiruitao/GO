@@ -30,8 +30,8 @@
 package ago
 
 import (
-	"time"
 	"fmt"
+	"time"
 )
 
 func main() {
@@ -51,21 +51,21 @@ func main() {
 		ch11 <- i
 	}
 
-	go func(){
+	go func() {
 		var e int
 		ok := false
 		var timer *time.Timer
 		var t time.Time
-		for{
+		for {
 			select {
-			case e = <- ch11:
-				fmt.Printf("ch11 -> %d\n",e)
-			case t = <- func() <-chan time.Time {
-				if timer == nil{
+			case e = <-ch11:
+				fmt.Printf("ch11 -> %d\n", e)
+			case t = <-func() <-chan time.Time {
+				if timer == nil {
 					//初始化到期时间据此间隔1ms的定时器
 					timer = time.NewTimer(time.Millisecond)
 					fmt.Println("Newtimer")
-				}else {
+				} else {
 					//复用，通过Reset方法重置定时器
 					fmt.Println(time.Now())
 					timer.Reset(time.Second * 2)
@@ -86,5 +86,5 @@ func main() {
 		}
 
 	}()
-	<- sign
+	<-sign
 }

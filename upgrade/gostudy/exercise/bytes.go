@@ -36,7 +36,7 @@ import (
 	//"io"
 )
 
-func Byte()  {
+func Byte() {
 	a := bytes.Buffer{}
 	a.WriteString("0123ss")
 	a.WriteByte('r')

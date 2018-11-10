@@ -43,9 +43,9 @@ var (
 type Event interface{}
 
 type Channel struct {
-	Ch chan Event
+	Ch     chan Event
 	closed chan struct{}
-	once sync.Once
+	once   sync.Once
 }
 
 func NewChannel(size int) *Channel {
@@ -53,10 +53,10 @@ func NewChannel(size int) *Channel {
 		size = 10
 	}
 
-	return  &Channel{
-		Ch: make(chan Event, size),
+	return &Channel{
+		Ch:     make(chan Event, size),
 		closed: make(chan struct{}),
-		once: sync.Once{},
+		once:   sync.Once{},
 	}
 }
 
@@ -68,7 +68,7 @@ func (ch *Channel) Send(ev Event) error {
 	select {
 	case ch.Ch <- ev:
 		return nil
-	case <- ch.closed:
+	case <-ch.closed:
 		return ErrClosed
 	}
 }

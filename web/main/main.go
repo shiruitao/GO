@@ -6,8 +6,8 @@
 package main
 
 import (
-	"net/http"
 	"log"
+	"net/http"
 
 	"github.com/shiruitao/GO/web"
 )

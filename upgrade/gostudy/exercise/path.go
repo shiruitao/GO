@@ -30,17 +30,17 @@
 package exercise
 
 import (
-	"io/ioutil"
-	"time"
-	"strconv"
 	"fmt"
+	"io/ioutil"
 	"os"
+	"strconv"
+	"time"
 )
 
 func getNameByTime(path string, suffix string) string {
 	files, _ := ioutil.ReadDir(path)
 	fmt.Println(len(files))
-	for _, file:= range files {
+	for _, file := range files {
 		fmt.Println(file.Name())
 	}
 	timeStamp := time.Now().Unix()

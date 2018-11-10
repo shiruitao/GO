@@ -30,8 +30,8 @@
 package ago
 
 import (
-	"fmt"
 	"encoding/json"
+	"fmt"
 )
 
 // json.Marshal() 用于将节结构转化为json
@@ -39,9 +39,9 @@ import (
 
 type User struct {
 	//结构字段必须是首字母大写
-	Name  string   `json:"name"` //``中的字段用于指定json键名，若不指定，则使用结构名
-	Age   int      `json:"age"`
-	Sex   string   `json:"sex"`
+	Name string `json:"name"` //``中的字段用于指定json键名，若不指定，则使用结构名
+	Age  int    `json:"age"`
+	Sex  string `json:"sex"`
 }
 
 func main() {

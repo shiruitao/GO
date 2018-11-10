@@ -1,16 +1,18 @@
 /*
 * Shi Ruitao  17-11-28
-*/
+ */
 
 package ago
+
 import (
 	"fmt"
 	"time"
 )
+
 func getSequence() func() int {
 	i := 0
 	return func() int {
-		i ++
+		i++
 		return i
 	}
 }
@@ -29,10 +31,10 @@ func main() {
 	fmt.Println(nextNumber())
 	nextNumber1 := getSequence()
 	fmt.Println(nextNumber1())
-	arr := [3] int {1, 2, 3}
+	arr := [3]int{1, 2, 3}
 	fmt.Println(arr)
 
-	var arr1 = [] int {1, 2, 13}
+	var arr1 = []int{1, 2, 13}
 	var avg float32
 	avg = getAverage(arr1, 3)
 	fmt.Printf("avg = %f \n", avg)
