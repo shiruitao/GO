@@ -7,13 +7,17 @@ package main
 
 import (
 	"github.com/shiruitao/GO/sort"
+	"time"
 )
 
 func main() {
-	sort.Instertion()
-	sort.InsertSort()
+	//sort.Instertion()
+	//sort.InsertSort()
+	//
+	//sort.ShellSort()
 
-	sort.ShellSort()
-
-	sort.Bubble()
+	go sort.Bubble()
+	time.Sleep(time.Second)
+	go sort.Bubble1()
+	time.Sleep(time.Second)
 }
