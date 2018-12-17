@@ -27,5 +27,6 @@ func main() {
 	//exercise.Ring()
 	//exercise.Dice()
 	//exercise.Ctx()
-	exercise.List()
+	a := []int{1, 2, 3, 4}
+	exercise.List(a)
 }
